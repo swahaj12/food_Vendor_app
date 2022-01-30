@@ -93,7 +93,7 @@ class _RegisterFormState extends State<RegisterForm> {
                 Padding(
                   padding: const EdgeInsets.all(3.0),
                   child: TextFormField(
-                    //keyboardType: TextInputType.number,
+                    keyboardType: TextInputType.phone,
                     maxLength: 10,
                     validator: (value) {
                       if (value!.isEmpty) {
@@ -297,22 +297,23 @@ class _RegisterFormState extends State<RegisterForm> {
                                   .registerVendor(email, password)
                                   .then((credential) {
                                 if (credential.user!.uid != null) {
-                                  uploadFile(_authData.image).then((url) {
+                                  uploadFile(_authData.image.path).then((url) {
                                     // ignore: unnecessary_null_comparison
                                     if (url != null) {
                                       //save vendor details to database.
-                                      _authData
-                                          .saveVendorDataToDb(
+                                      _authData.saveVendorDataToDb(
                                         url: url,
                                         mobile: mobile,
                                         shopName: shopName,
                                         dialog: _dialogTextController.text,
-                                      )
-                                          .then((value) {
+                                      );
+
+                                      setState(() {
                                         _isLoading = false;
-                                        Navigator.pushReplacementNamed(
-                                            context, HomeScreen.id);
                                       });
+                                      Navigator.pushReplacementNamed(
+                                          context, HomeScreen.id);
+
                                       //After finish all the process will navigate to Home Screen
 
                                     } else {

@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:food_vendor_app/providers/auth_provider.dart';
 
 import 'package:food_vendor_app/screens/home_screen.dart';
+import 'package:food_vendor_app/screens/login_screen.dart';
 import 'package:food_vendor_app/screens/register_screen.dart';
+import 'package:food_vendor_app/screens/reset_password_screen.dart';
 import 'package:provider/provider.dart';
 
 import 'screens/splash_screen.dart';
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
         SplashScreen.id: (context) => const SplashScreen(),
         RegisterScreen.id: (context) => const RegisterScreen(),
         HomeScreen.id: (context) => const HomeScreen(),
+        LoginScreen.id: (context) => LoginScreen(),
+        ResetPassword.id: (context) => const ResetPassword(),
       },
     );
   }

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:food_vendor_app/screens/reset_password_screen.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:location/location.dart';
@@ -21,7 +22,8 @@ class AuthProvider extends ChangeNotifier {
   Future<File> getImage() async {
     final picker = ImagePicker();
     // ignore: deprecated_member_use
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final pickedFile =
+        await picker.getImage(source: ImageSource.gallery, imageQuality: 20);
     if (pickedFile != null) {
       this.image = File(pickedFile.path);
       notifyListeners();
@@ -73,16 +75,11 @@ class AuthProvider extends ChangeNotifier {
   }
 
 //register vendor using email
-//error possile
+
   Future<UserCredential> registerVendor(email, password) async {
     this.email = email;
     notifyListeners();
-    UserCredential
-        userCredential; /*=
-        await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: '',
-      password: '',
-    );*/
+    late UserCredential userCredential;
     try {
       userCredential =
           await FirebaseAuth.instance.createUserWithEmailAndPassword(
@@ -107,6 +104,45 @@ class AuthProvider extends ChangeNotifier {
     return userCredential;
   }
 
+//Login
+
+  Future<UserCredential> loginVendor(email, password) async {
+    this.email = email;
+    notifyListeners();
+    late UserCredential userCredential;
+    try {
+      userCredential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      this.error = e.code;
+      notifyListeners();
+    } catch (e) {
+      error = e.toString();
+      notifyListeners();
+      print(e);
+    }
+    return userCredential;
+  }
+
+//Reset Password
+  Future<void> ResetPassword(email) async {
+    this.email = email;
+    notifyListeners();
+    UserCredential userCredential;
+    try {
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      this.error = e.code;
+      notifyListeners();
+    } catch (e) {
+      error = e.toString();
+      notifyListeners();
+      print(e);
+    }
+  }
+
 //save vendor data to firestore
   Future<void> saveVendorDataToDb(
       {required String url,
@@ -127,6 +163,8 @@ class AuthProvider extends ChangeNotifier {
       'rating': 0.00,
       'totalRating': 0,
       'isTopPicked': true,
+      'imageUrl': url,
+      'accVerified': true, //only varified vendor can sell their product
     });
   }
 }
