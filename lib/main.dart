@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:food_vendor_app/providers/auth_provider.dart';
+import 'package:food_vendor_app/screens/add_newproduct_screen.dart';
 
 import 'package:food_vendor_app/screens/home_screen.dart';
 import 'package:food_vendor_app/screens/login_screen.dart';
@@ -39,6 +40,7 @@ class MyApp extends StatelessWidget {
         HomeScreen.id: (context) => const HomeScreen(),
         LoginScreen.id: (context) => LoginScreen(),
         ResetPassword.id: (context) => const ResetPassword(),
+        AddNewProduct.id: (context) => AddNewProduct(),
       },
     );
   }

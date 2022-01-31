@@ -112,7 +112,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                                     fontWeight: FontWeight.bold))),
                   ),
                 ],
-              )
+              ),
             ],
           ),
         ),
