@@ -56,9 +56,9 @@ class _SliderViewState extends State<SliderView> {
                     child: CircleAvatar(
                       //shop Picture
                       radius: 30,
-                      backgroundImage: NetworkImage(vendorData != null
-                          ? vendorData.data()['imageUrl']
-                          : null),
+                      backgroundImage: vendorData != null
+                          ? NetworkImage(vendorData.data()['imageUrl'])
+                          : null,
                     ),
                   ),
                   //cant add sized box here

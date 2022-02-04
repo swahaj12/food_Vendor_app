@@ -155,6 +155,7 @@ class AuthProvider extends ChangeNotifier {
     _vendors.set({
       'uid': user.uid,
       'shopName': shopName,
+      'mobile': mobile,
       'email': this.email,
       'dialog': dialog,
       'address': '${this.placeName}:${this.shopAddress}',

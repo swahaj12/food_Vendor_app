@@ -64,13 +64,14 @@ class ProductScreen extends StatelessWidget {
             ),
             TabBar(
                 indicatorColor: Theme.of(context).primaryColor,
-                labelColor: Colors.black,
+                labelColor: Theme.of(context).primaryColor,
+                unselectedLabelColor: Colors.black54,
                 tabs: [
                   Tab(
                     text: 'Published',
                   ),
                   Tab(
-                    text: 'Un Published',
+                    text: 'UN Published',
                   ),
                 ]),
             Expanded(
