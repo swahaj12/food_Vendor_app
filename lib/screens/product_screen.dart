@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_vendor_app/screens/add_newproduct_screen.dart';
+import 'package:food_vendor_app/widgets/published_product.dart';
+import 'package:food_vendor_app/widgets/unpublished_product.dart';
 
 class ProductScreen extends StatelessWidget {
   const ProductScreen({Key? key}) : super(key: key);
@@ -77,12 +79,8 @@ class ProductScreen extends StatelessWidget {
             Expanded(
               child: Container(
                 child: TabBarView(children: [
-                  Center(
-                    child: Text('Published Product'),
-                  ),
-                  Center(
-                    child: Text('Un Published Product'),
-                  ),
+                  PublishedProducts(),
+                  UnPublishedProducts(),
                 ]),
               ),
             )

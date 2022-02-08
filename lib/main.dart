@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:food_vendor_app/providers/auth_provider.dart';
 import 'package:food_vendor_app/providers/product_provider.dart';
 import 'package:food_vendor_app/screens/add_newproduct_screen.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.deepOrange, fontFamily: 'Lato'),
+      builder: EasyLoading.init(),
       initialRoute: SplashScreen.id,
       routes: {
         SplashScreen.id: (context) => const SplashScreen(),

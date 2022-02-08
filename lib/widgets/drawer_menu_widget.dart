@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:food_vendor_app/providers/product_provider.dart';
+import 'package:provider/provider.dart';
 
 class SliderView extends StatefulWidget {
   final Function(String)? onItemClick;
@@ -34,6 +36,9 @@ class _SliderViewState extends State<SliderView> {
 
   @override
   Widget build(BuildContext context) {
+    var _provider = Provider.of<ProductProvider>(context);
+    _provider
+        .getShopName(vendorData != null ? vendorData.data()['shopName'] : '');
     return Container(
       color: Colors.white,
       padding: const EdgeInsets.only(
@@ -86,6 +91,10 @@ class _SliderViewState extends State<SliderView> {
           _SliderMenuItem(
               title: 'Product',
               iconData: Icons.shopping_bag_outlined,
+              onTap: widget.onItemClick),
+          _SliderMenuItem(
+              title: 'Banner',
+              iconData: CupertinoIcons.photo,
               onTap: widget.onItemClick),
           _SliderMenuItem(
               title: 'Coupons',
