@@ -44,79 +44,81 @@ class _SliderViewState extends State<SliderView> {
       padding: const EdgeInsets.only(
         top: 30,
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          SizedBox(
-            height: 40,
-          ),
-          Padding(
-            padding: const EdgeInsets.all(10.0),
-            child: FittedBox(
-              child: Row(
-                children: [
-                  CircleAvatar(
-                    radius: 32,
-                    backgroundColor: Colors.grey,
-                    child: CircleAvatar(
-                      //shop Picture
-                      radius: 30,
-                      backgroundImage: vendorData != null
-                          ? NetworkImage(vendorData.data()['imageUrl'])
-                          : null,
+      child: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            SizedBox(
+              height: 40,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: FittedBox(
+                child: Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 32,
+                      backgroundColor: Colors.grey,
+                      child: CircleAvatar(
+                        //shop Picture
+                        radius: 30,
+                        backgroundImage: vendorData != null
+                            ? NetworkImage(vendorData.data()['imageUrl'])
+                            : null,
+                      ),
                     ),
-                  ),
-                  //cant add sized box here
-                  Text(
-                    vendorData != null
-                        ? vendorData.data()['shopName']
-                        : 'Shop Name',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                        fontSize: 20,
-                        fontFamily: 'BalsamiqSans'),
-                  ),
-                ],
+                    //cant add sized box here
+                    Text(
+                      vendorData != null
+                          ? vendorData.data()['shopName']
+                          : 'Shop Name',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          fontFamily: 'BalsamiqSans'),
+                    ),
+                  ],
+                ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          _SliderMenuItem(
-              title: 'Dashboard',
-              iconData: Icons.dashboard_outlined,
-              onTap: widget.onItemClick),
-          _SliderMenuItem(
-              title: 'Product',
-              iconData: Icons.shopping_bag_outlined,
-              onTap: widget.onItemClick),
-          _SliderMenuItem(
-              title: 'Banner',
-              iconData: CupertinoIcons.photo,
-              onTap: widget.onItemClick),
-          _SliderMenuItem(
-              title: 'Coupons',
-              iconData: CupertinoIcons.gift,
-              onTap: widget.onItemClick),
-          _SliderMenuItem(
-              title: 'Order',
-              iconData: Icons.list_alt_outlined,
-              onTap: widget.onItemClick),
-          _SliderMenuItem(
-              title: 'Report',
-              iconData: Icons.stacked_bar_chart,
-              onTap: widget.onItemClick),
-          _SliderMenuItem(
-              title: 'Setting',
-              iconData: Icons.settings_outlined,
-              onTap: widget.onItemClick),
-          _SliderMenuItem(
-              title: 'LogOut',
-              iconData: Icons.arrow_back_ios,
-              onTap: widget.onItemClick),
-        ],
+            SizedBox(
+              height: 10,
+            ),
+            _SliderMenuItem(
+                title: 'Dashboard',
+                iconData: Icons.dashboard_outlined,
+                onTap: widget.onItemClick),
+            _SliderMenuItem(
+                title: 'Product',
+                iconData: Icons.shopping_bag_outlined,
+                onTap: widget.onItemClick),
+            _SliderMenuItem(
+                title: 'Banner',
+                iconData: CupertinoIcons.photo,
+                onTap: widget.onItemClick),
+            _SliderMenuItem(
+                title: 'Coupons',
+                iconData: CupertinoIcons.gift,
+                onTap: widget.onItemClick),
+            _SliderMenuItem(
+                title: 'Order',
+                iconData: Icons.list_alt_outlined,
+                onTap: widget.onItemClick),
+            _SliderMenuItem(
+                title: 'Report',
+                iconData: Icons.stacked_bar_chart,
+                onTap: widget.onItemClick),
+            _SliderMenuItem(
+                title: 'Setting',
+                iconData: Icons.settings_outlined,
+                onTap: widget.onItemClick),
+            _SliderMenuItem(
+                title: 'LogOut',
+                iconData: Icons.arrow_back_ios,
+                onTap: widget.onItemClick),
+          ],
+        ),
       ),
     );
   }

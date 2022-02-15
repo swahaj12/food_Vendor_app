@@ -2,7 +2,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:food_vendor_app/providers/auth_provider.dart';
+import 'package:food_vendor_app/providers/order_provider.dart';
 import 'package:food_vendor_app/providers/product_provider.dart';
+import 'package:food_vendor_app/screens/add_edit_coupon_screen.dart';
 import 'package:food_vendor_app/screens/add_newproduct_screen.dart';
 
 import 'package:food_vendor_app/screens/home_screen.dart';
@@ -22,6 +24,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (_) => AuthProvider()),
         ChangeNotifierProvider(create: (_) => ProductProvider()),
+        ChangeNotifierProvider(create: (_) => OrderProvider()),
       ],
       child: MyApp(),
     ),
@@ -45,6 +48,7 @@ class MyApp extends StatelessWidget {
         LoginScreen.id: (context) => LoginScreen(),
         ResetPassword.id: (context) => const ResetPassword(),
         AddNewProduct.id: (context) => AddNewProduct(),
+        AddEditCoupon.id: (context) => AddEditCoupon(),
       },
     );
   }
